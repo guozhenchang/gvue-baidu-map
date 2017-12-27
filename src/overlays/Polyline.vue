@@ -66,13 +66,22 @@ export default {
     }
   },
   methods: {
-    load () {
-      const {BMap, map, path, strokeColor, strokeWeight, strokeOpacity, strokeStyle, editing, massClear, clicking} = this
+   load () {
+      alert(111)
+      console.log(iconss)
+      const {BMap, map, path, strokeColor, strokeWeight, strokeOpacity, strokeStyle, editing, massClear, clicking} = this;
+      let sy = new BMap.Symbol(BMap_Symbol_SHAPE_BACKWARD_OPEN_ARROW, {
+        scale: 0.6,//图标缩放大小
+        strokeColor:'#000',//设置矢量图标的线填充颜色
+        strokeWeight: '12',//设置线宽
+      });
+      let iconss = new BMap.IconSequence(sy,'10','30');
       const overlay = new BMap.Polyline(path.map(item => createPoint(BMap, {lng: item.lng, lat: item.lat})), {
         strokeColor,
         strokeWeight,
         strokeOpacity,
         strokeStyle,
+        icons:[iconss],
         enableEditing: editing,
         enableMassClear: massClear,
         enableClicking: clicking
